@@ -48,6 +48,28 @@ This is a Node.js-based Transaction Reconciliation Engine. It ingests CSV export
 
 - **\`GET /api/report/:runId/unmatched\`**
   Returns only the unmatched transactions.
+  1. Trigger Reconciliation (POST)
+Uploads files and initiates the matching engine.
+
+ \`\`\`bash
+curl.exe -F "userFile=@test_user.csv" -F "exchangeFile=@test_exchange.csv" http://localhost:3000/api/reconcile
+Response: Returns a runId (e.g., d1a99380-b7eb-477d-979f-6096001a7754).
+
+2. Get Summary Report (GET)
+Returns a high-level count of matched, unmatched, and conflicting records.
+
+ \`\`\`bash
+curl.exe http://localhost:3000/api/report/<YOUR_RUN_ID>/summary
+3. Get Full Detailed Report (GET)
+Returns the complete list of processed transactions and their individual matching statuses.
+
+ \`\`\`bash
+curl.exe http://localhost:3000/api/report/<YOUR_RUN_ID>
+4. Get Unmatched Records (GET)
+Filters the report to show only transactions that could not be reconciled.
+
+ \`\`\`bash
+curl.exe http://localhost:3000/api/report/<YOUR_RUN_ID>/unmatched
 
 ## Key Decisions & Assumptions
 
