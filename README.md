@@ -62,11 +62,16 @@ Returns a high-level count of matched, unmatched, and conflicting records.
 
  \`\`\`bash
 curl.exe http://localhost:3000/api/report/<YOUR_RUN_ID>/summary
+
+
 3. Get Full Detailed Report (GET)
 Returns the complete list of processed transactions and their individual matching statuses.
 
  \`\`\`bash
 curl.exe http://localhost:3000/api/report/<YOUR_RUN_ID>
+
+
+
 4. Get Unmatched Records (GET)
 Filters the report to show only transactions that could not be reconciled.
 
